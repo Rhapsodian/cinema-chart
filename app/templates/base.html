@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        {% if title %}
+            <title>
+                {{ title }}
+            </title>
+        {% else %}
+            <title>
+                Cinema Chart
+            </title>
+        {% endif %}
+    {% endblock %}
+</head>
+<body>
+    {% block nav_bar %}
+        <ul>
+            <li>
+                <a href="{{ url_for("index") }}">Home</a>
+            </li>
+        </ul>
+    {% endblock %}
+    {% block main_content %}
+    {% endblock %}
+</body>
+</html>
