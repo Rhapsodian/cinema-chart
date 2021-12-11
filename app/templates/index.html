@@ -2,28 +2,30 @@
 
 {% block main_content %}
     
-    <a href="{{ url_for('movies', month=prev_month, year=prev_year) }}">PREVIOUS</a>
-    <h2>
-        {{ month_name }}, {{ year }}
-    </h2>
-    <a href="{{ url_for('movies', month=next_month, year=next_year) }}">NEXT</a>
-
-    <div class="chart">
-        {% if movies %}
-            <ul>
-                {% for movie in movies %}
-                    <li>
-                        {{ movie["title"] }}
-                    </li>   
-                {% endfor %}
-            </ul>
-        {% endif %}
-
-        {% if prev_url %}
-            <a href="{{ url_for('movies', month=month, year=year, page=(page-1)) }}">PREVIOUS</a>
-        {% endif %}
-        {% if next_url %}
-            <a href="{{ url_for('movies', month=month, year=year, page=(page+1)) }}">NEXT</a>
-        {% endif %}
+    <div class="container">
+        <a href="{{ url_for('movies', month=prev_month, year=prev_year) }}">PREVIOUS</a>
+        <h2>
+            {{ month_name }}, {{ year }}
+        </h2>
+        <a href="{{ url_for('movies', month=next_month, year=next_year) }}">NEXT</a>
+        
+        <div class="chart">
+            {% if movies %}
+                <ul>
+                    {% for movie in movies %}
+                        <li>
+                            {{ movie["title"] }}
+                        </li>   
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        
+            {% if prev_url %}
+                <a href="{{ url_for('movies', month=month, year=year, page=(page-1)) }}">PREVIOUS</a>
+            {% endif %}
+            {% if next_url %}
+                <a href="{{ url_for('movies', month=month, year=year, page=(page+1)) }}">NEXT</a>
+            {% endif %}
+        </div>
     </div>
 {% endblock %}
