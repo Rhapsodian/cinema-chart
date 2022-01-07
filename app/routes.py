@@ -7,8 +7,6 @@ from flask import request, render_template, url_for
 
 @app.route('/')
 @app.route('/index')
-def index():
-    return 'HELLO WORLD!'
 @app.route('/movies', methods=["GET", "POST"])
 def movies():
     page = request.args.get("page", 1, type=int)

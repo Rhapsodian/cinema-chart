@@ -9,15 +9,27 @@
         </h2>
         <a href="{{ url_for('movies', month=next_month, year=next_year) }}">NEXT</a>
         
-        <div class="chart">
             {% if movies %}
-                <ul>
-                    {% for movie in movies %}
-                        <li>
-                            {{ movie["title"] }}
-                        </li>   
-                    {% endfor %}
-                </ul>
+                <div class="container">
+                    <div class="row">
+                        {% for movie in movies %}
+                                <div class="col-md-6 col-lg-4 card">
+                                    <img class="card-img-top" 
+                                        src="{{ 'https://image.tmdb.org/t/p/w500/' + 
+                                            movie['poster_path']}}" 
+                                        alt="{{ movie['title'] }} Poster">
+                                    <div class="card-text">
+                                        <h5 class="card-title">
+                                            {{ movie["title"] }}
+                                        </h5>
+                                            <p class="card-text">
+                                                {{ movie["overview"] }} 
+                                            </p>
+                                    </div>
+                                </div>
+                        {% endfor %}
+                    </div>
+                </div>
             {% endif %}
         
             {% if prev_url %}
@@ -26,6 +38,5 @@
             {% if next_url %}
                 <a href="{{ url_for('movies', month=month, year=year, page=(page+1)) }}">NEXT</a>
             {% endif %}
-        </div>
     </div>
 {% endblock %}
